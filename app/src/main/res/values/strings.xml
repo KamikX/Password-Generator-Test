@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Password Generator</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="hint_alias">Alias</string>
+    <string name="hint_secret">Secret</string>
+
+    <string name="checkbox_show_pass">Show secret</string>
+    <string name="checkbox_copy_clipboard">Copy to clipboard</string>
+    <string name="checkbox_copy_clipboard_description">Copies password to your clipboard after click on \"Generate\" button</string>
+    <string name="checkbox_remember">Remember secret</string>
+    <string name="checkbox_remember_description">Saves secret in apps local storage</string>
+
+    <string name="button_generate">GENERATE</string>
+    <string name="button_copy_clipboard">Copy to clipboard</string>
+    <string name="button_exit">EXIT</string>
+    <string name="button_try_again">BACK</string>
+    <string name="button_clear">CLEAR</string>
+
+    <string name="password_generated">You can now copy your password to clipboard using the \"Copy to clipboard\" button below. Inputs and password will clear itself in minute after leaving the app!</string>
+
+    <string name="toast_err_pass_generator">Unable to generate password</string>
+    <string name="toast_err_empty_fields">Please fill in both inputs</string>
+    <string name="toast_clipboard">Password copied to clipboard</string>
+    <string name="toast_timeout">Last input cleared for safety</string>
+
+    <string name="title_activity_about">About</string>
+    <string name="dismiss">Dismiss</string>
+
+    <!-- Notification -->
+    <string name="notification_title">Generate password</string>
+    <string name="notification_title_generated">Password generated</string>
+    <string name="notification_input_alias">Input alias</string>
+    <string name="notification_toast_clipboard">Password has been copied to clipboard.</string>
+    <string name="notification_action">Enter alias</string>
+
+</resources>

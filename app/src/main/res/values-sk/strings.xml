@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Generátor hesiel</string>
+    <string name="action_settings">Nastevenia</string>
+
+    <string name="hint_alias">Alias služby</string>
+    <string name="hint_secret">Tajomstvo (secret)</string>
+
+    <string name="checkbox_show_pass">Zobraziť heslo</string>
+    <string name="checkbox_copy_clipboard">Skopírovať heslo do schránky</string>
+    <string name="checkbox_copy_clipboard_description">Automaticky skopíruje vygenerované heslo do schránky</string>
+    <string name="checkbox_remember">Pamätať tajomstvo</string>
+    <string name="checkbox_remember_description">Uloží heslo v aplikácii pre ďalšie použitie</string>
+
+    <string name="button_generate">Generovať</string>
+    <string name="button_copy_clipboard">Kopírovať do schránky</string>
+    <string name="button_exit">Skončiť</string>
+    <string name="button_try_again">Skúsiť znova</string>
+    <string name="button_clear">Vymazať</string>
+
+    <string name="password_generated">Môžete si teraz  skopírovať vygenerované heslo stlačením tlačidla \"Kopírovať do schránky\". Heslo a vstupy aplikácie sa vyčistia o minútu od odchodu z aplikácie. </string>
+
+    <string name="toast_err_pass_generator">Heslo sa neporadilo vygenerovať</string>
+    <string name="toast_err_empty_fields">Vyplnte obidva vstupy</string>
+    <string name="toast_clipboard">Heslo skopírované do schránky</string>
+    <string name="toast_timeout">Generátor hesiel: Posledný vstup zmazaný pre vyššiu bezpečnosť</string>
+
+    <string name="title_activity_about">O aplikácii</string>
+    <string name="dismiss">Schovať</string>
+    <string name="notification_action">Zadajte alias</string>
+    <string name="notification_input_alias">Zadajte alias</string>
+    <string name="notification_title">Vygenerovať heslo</string>
+    <string name="notification_title_generated">Heslo vygenerované</string>
+    <string name="notification_toast_clipboard">Heslo skopírované do schránky</string>
+
+</resources>

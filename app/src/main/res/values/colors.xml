@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="transparent">#00000000</color>
+    <color name="default_blue">#1e86bd</color>
+    <color name="default_green">#96cb1b</color>
+    <color name="dark_blue">#ff1d6ea0</color>
+    <color name="dark_green">#ff6f9d18</color>
+    <color name="white">#ffffff</color>
+    <color name="button_blue">#1e86bd</color>
+    <color name="button_green">#1e86bd</color>
+    <color name="button_orange">#f96f33</color>
+
+    <color name="app_background">#eeeeee</color>
+</resources>
