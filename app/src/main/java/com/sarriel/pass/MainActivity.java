@@ -86,16 +86,11 @@ public class MainActivity extends AppCompatActivity implements FormFragment.OnFr
     protected void onPause() {
         super.onPause();
         this.lastVisited = System.currentTimeMillis();
-        Log.d(TAG,"onPause");
-        Log.d(TAG,"Last visited time: "+ lastVisited);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.d(TAG,"onResume");
-        Log.d(TAG,"Current time: "+ System.currentTimeMillis());
-        Log.d(TAG,"Last visited time: "+ lastVisited);
         //clear input if app in background too long
         if (System.currentTimeMillis() > this.lastVisited + TIMEOUT && this.lastVisited != 0) {
             makeToast(R.string.toast_timeout);
