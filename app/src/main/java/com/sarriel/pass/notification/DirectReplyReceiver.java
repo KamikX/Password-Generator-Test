@@ -7,10 +7,9 @@ import android.os.Bundle;
 import android.support.v4.app.RemoteInput;
 import android.util.Log;
 import android.widget.Toast;
-
+import com.sarriel.pass.App;
 import com.sarriel.pass.ClipboardHelper;
-import com.sarriel.pass.passwordgenerator.PasswordGenException;
-import com.sarriel.pass.passwordgenerator.PasswordGenerator;
+import com.sarriel.pass.service.PasswordGenException;
 import com.sarriel.pass.R;
 import com.sarriel.pass.Storage;
 
@@ -35,7 +34,8 @@ public class DirectReplyReceiver extends BroadcastReceiver {
         Toast.makeText(context, R.string.notification_toast_clipboard, Toast.LENGTH_LONG).show();
         String secret = Storage.getSecret(context);
         try {
-            String password = PasswordGenerator.generatePassword(alias, secret);
+            // generate password in bound service
+            String password =  App.getInstance().getService().generatePassword(alias, secret);
             ClipboardHelper.copyToClipboard(context, password);
             Toast.makeText(context, R.string.notification_toast_clipboard, Toast.LENGTH_LONG).show();
         } catch (PasswordGenException e) {

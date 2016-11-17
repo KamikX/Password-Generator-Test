@@ -1,14 +1,32 @@
-package com.sarriel.pass.passwordgenerator;
+package com.sarriel.pass.service;
 
+import android.app.Service;
+import android.content.Intent;
+import android.os.Binder;
+import android.os.IBinder;
 import android.util.Base64;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class PasswordGenerator {
+public class PasswordGeneratorService extends Service {
 
-    private PasswordGenerator() {}
+    // Binder given to clients
+    private final IBinder mBinder = new PasswordGeneratorBinder();
+
+
+    @Override
+    public IBinder onBind(Intent intent) {
+       return  mBinder;
+    }
+
+
+    public class PasswordGeneratorBinder extends Binder {
+        public PasswordGeneratorService getService() {
+            return PasswordGeneratorService.this;
+        }
+    }
 
     /**
      * Generate password by using SHA-256 hashing method on concatenated alias and secret.
@@ -17,7 +35,7 @@ public class PasswordGenerator {
      * @return
      * @throws PasswordGenException
      */
-    public static String generatePassword(String alias, String secret) throws PasswordGenException {
+    public  String generatePassword(String alias, String secret) throws PasswordGenException {
         String seed = alias.concat(secret);
         String password = null;
         try {
@@ -34,7 +52,7 @@ public class PasswordGenerator {
      * @param string
      * @return
      */
-    private static String getHash(String string) {
+    private  String getHash(String string) {
         MessageDigest digest=null;
         try {
             digest = MessageDigest.getInstance("SHA-256");
@@ -50,10 +68,12 @@ public class PasswordGenerator {
      * @param data
      * @return
      */
-    private static String bin2hex(byte[] data) {
+    private  String bin2hex(byte[] data) {
         return String.format("%0" + (data.length*2) + "x", new BigInteger(1, data));
     }
 
+
+
+
+
 }
-
-

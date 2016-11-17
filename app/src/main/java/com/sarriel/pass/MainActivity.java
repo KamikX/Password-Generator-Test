@@ -1,5 +1,4 @@
 package com.sarriel.pass;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -17,6 +16,7 @@ import android.view.animation.AnimationUtils;
 public class MainActivity extends AppCompatActivity implements FormFragment.OnFragmentInteractionListener, ResultFragment.OnFragmentInteractionListener {
     private static final String TAG = MainActivity.class.getSimpleName();
     private static final int TIMEOUT = 60000; //1 min
+    private static final String LAST_VISITED = "LAST_VISITED";
     private boolean passVisible = false;
     private long lastVisited = 0;
     private FormFragment form;
@@ -29,6 +29,11 @@ public class MainActivity extends AppCompatActivity implements FormFragment.OnFr
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (savedInstanceState != null) {
+            lastVisited = savedInstanceState.getLong(LAST_VISITED);
+        }
+
         setContentView(R.layout.activity_pass_generator);
         Log.d(TAG, "activity created");
         FragmentManager fm = getSupportFragmentManager();
@@ -68,9 +73,6 @@ public class MainActivity extends AppCompatActivity implements FormFragment.OnFr
         return super.onOptionsItemSelected(item);
     }
 
-    /**
-     *
-     */
     @Override
     public void onBackPressed() {
         if(passVisible) {
@@ -84,17 +86,28 @@ public class MainActivity extends AppCompatActivity implements FormFragment.OnFr
     protected void onPause() {
         super.onPause();
         this.lastVisited = System.currentTimeMillis();
+        Log.d(TAG,"onPause");
+        Log.d(TAG,"Last visited time: "+ lastVisited);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        Log.d(TAG,"onResume");
+        Log.d(TAG,"Current time: "+ System.currentTimeMillis());
+        Log.d(TAG,"Last visited time: "+ lastVisited);
         //clear input if app in background too long
         if (System.currentTimeMillis() > this.lastVisited + TIMEOUT && this.lastVisited != 0) {
             makeToast(R.string.toast_timeout);
             showForm();
             this.form.cleanInputs();
         }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putLong(LAST_VISITED,lastVisited);
     }
 
     private void hideForm() {
@@ -126,7 +139,6 @@ public class MainActivity extends AppCompatActivity implements FormFragment.OnFr
         this.form.focusAlias();
     }
 
-
     @Override
     public void passwordGenerated(String password) {
         this.result.setPassword(password);
@@ -147,4 +159,9 @@ public class MainActivity extends AppCompatActivity implements FormFragment.OnFr
     public void onResultDismissed() {
         animateShowForm();
     }
+
+
+
+
+
 }

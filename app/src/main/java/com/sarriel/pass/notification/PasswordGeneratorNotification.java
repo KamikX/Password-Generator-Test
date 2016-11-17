@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.RemoteInput;
 
+import com.sarriel.pass.MainActivity;
 import com.sarriel.pass.R;
 
 /**
@@ -63,17 +64,17 @@ public class PasswordGeneratorNotification {
                         .addRemoteInput(remoteInput)
                         .build();
 
-        Notification notification =
+        // Build the notification and add the action.
+        Notification newMessageNotification =
                 new NotificationCompat.Builder(context)
-                        .setColor(context.getResources().getColor(R.color.default_blue))
-                        .setSmallIcon(
-                                android.R.drawable.ic_dialog_info)
+                        .setSmallIcon(android.R.drawable.ic_dialog_info)
                         .setContentTitle(message)
-                        .setPriority(NotificationCompat.PRIORITY_MIN)
-                        .addAction(replyAction).build();
+                        .addAction(replyAction)
+                        .build();
 
-        return notification;
+        return newMessageNotification;
     }
+
 
     /**
      * Hide notification.
